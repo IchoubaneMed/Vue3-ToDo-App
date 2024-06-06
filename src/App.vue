@@ -4,12 +4,12 @@ import { ref } from 'vue';
 import AddTodo from './components/AddTodo.vue';
 import TodoList from './components/TodoList.vue';
 
-import { useToast } from 'vue-toastification';
+import { useToast } from "vue-toastification";
 
 const todos = ref([]);
 const toast = useToast();
 
-const AddTodo = (todo) => {
+const addTodo = (todo) => {
   todo.value.push(todo);
   toast.success('Todo added!');
 };
@@ -27,7 +27,7 @@ const deleteTodo = (index) => {
     <h1>Vue 3 ToDo App</h1>
   </header>
   <main>
-    <AddTodo @add-todo="AddTodo" />
+    <AddTodo @add-todo="addTodo" />
     <TodoList :todos="todos" @delete-todo="deleteTodo"/>
   </main>
 </template>
