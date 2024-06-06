@@ -4,7 +4,7 @@ const props = defineProps({
     todo: String,
 });
 
-const emit = defineEmits(['delete-todo']);
+const emits = defineEmits(['delete-todo']);
 
 const deleteTodo = () => {
     emits('delete-todo');
