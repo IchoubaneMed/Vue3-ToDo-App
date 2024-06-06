@@ -10,7 +10,7 @@ const todos = ref([]);
 const toast = useToast();
 
 const addTodo = (todo) => {
-  todo.value.push(todo);
+  todos.value.push(todo);
   toast.success('Todo added!');
 };
 
