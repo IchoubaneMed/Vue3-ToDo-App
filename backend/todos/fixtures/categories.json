@@ -1,0 +1,38 @@
+[
+    {
+      "model": "todos.category",
+      "pk": 1,
+      "fields": {
+        "name": "Electronics"
+      }
+    },
+    {
+      "model": "todos.category",
+      "pk": 2,
+      "fields": {
+        "name": "Clothing"
+      }
+    },
+    {
+      "model": "todos.category",
+      "pk": 3,
+      "fields": {
+        "name": "Books"
+      }
+    },
+    {
+      "model": "todos.category",
+      "pk": 4,
+      "fields": {
+        "name": "Home & Garden"
+      }
+    },
+    {
+      "model": "todos.category",
+      "pk": 5,
+      "fields": {
+        "name": "Toys & Games"
+      }
+    }
+  ]
+  
