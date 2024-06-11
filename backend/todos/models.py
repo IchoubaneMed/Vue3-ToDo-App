@@ -17,7 +17,7 @@ class Todo(models.Model):
     completed = models.BooleanField(default=False)
     priority = models.CharField(max_length=50, choices=[('low', 'Low'), ('medium', 'Medium'), ('high', 'High')])
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    Category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.title
