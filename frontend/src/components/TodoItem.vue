@@ -1,44 +1,46 @@
 <script setup>
-import { defineProps, defineEmits } from 'vue';
+import { toRefs } from 'vue';
+import { useTodosStore } from '@/stores/todos';
+
 const props = defineProps({
-    todo: String,
-});
+    todo: Object,
+})
+const { todo } = toRefs(props);
+const todosStore = useTodosStore();
 
-const emits = defineEmits(['delete-todo']);
+const updateTodo = async () => {
+    try {
+        await todosStore.updateTodo({ ...todo.value, completed: todo.value.completed });
+    } catch (error) {
+        console.error(error);
+    }
+}
 
-const deleteTodo = () => {
-    emits('delete-todo');
-};
+const deleteTodo = async () => {
+    try {
+        await todosStore.deleteTodo(todo.value.id);
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 </script>
 
 
 <template>
-    <li class="todo-item">
-        {{ todo }}
+    <div class="todo-item">
+        <input type="checkbox" v-model="todo.completed" @change="updateTodo" />
+        <span :class="{ completed: todo.completed }">{{ todo.title }}</span>
         <button @click="deleteTodo">Delete</button>
-    </li>
+    </div>
 </template>
 
 <style scoped>
 .todo-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem;
-    border-bottom: 1px solid #ccc;
+    color: #000;
 }
 
-.todo-item button {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 0.5rem;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.todo-item button:hover {
-    background-color: #c0392b;
+.completed {
+    text-decoration: line-through;
 }
 </style>
